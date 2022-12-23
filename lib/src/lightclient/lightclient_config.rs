@@ -23,7 +23,7 @@ use zcash_primitives::{
 
 use crate::{grpc_connector::GrpcConnector, lightclient::checkpoints};
 
-pub const DEFAULT_SERVER: &str = "https://lwdv3.zecwallet.co";
+pub const DEFAULT_SERVER: &str = "http://127.0.0.1:9067";
 pub const WALLET_NAME: &str = "zecwallet-light-wallet.dat";
 pub const LOGFILE_NAME: &str = "zecwallet-light-wallet.debug.log";
 pub const DEFAULT_ANCHOR_OFFSET: u32 = 1;
@@ -43,10 +43,10 @@ impl Parameters for UnitTestNetwork {
         match nu {
             NetworkUpgrade::Overwinter => Some(BlockHeight::from(1)),
             NetworkUpgrade::Sapling => Some(BlockHeight::from(1)),
-            NetworkUpgrade::Blossom => Some(BlockHeight::from(1)),
-            NetworkUpgrade::Heartwood => Some(BlockHeight::from(1)),
-            NetworkUpgrade::Canopy => Some(BlockHeight::from(1)),
-            NetworkUpgrade::Nu5 => Some(BlockHeight::from(1)),
+            NetworkUpgrade::Blossom => None,
+            NetworkUpgrade::Heartwood => None,
+            NetworkUpgrade::Canopy => None,
+            NetworkUpgrade::Nu5 => None,
             #[cfg(feature = "zfuture")]
             NetworkUpgrade::ZFuture => None,
         }
